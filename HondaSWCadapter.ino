@@ -14,21 +14,21 @@ float input_TIP = 0;
 float input_RING = 0;
 float input_HFT = 0;
 
-float R_MODE_min = 1800;
-float R_MODE_max = 1850;
-float R_VolPlus_min = 18200;
-float R_VolPlus_max = 18300;
-float R_VolMinus_min = 24060;
-float R_VolMinus_max = 24180;
-float R_ChPlus_min = 8800;
-float R_ChPlus_max = 8880;
-float R_ChMinus_min = 12800;
-float R_ChMinus_max = 12870;
+float R_MODE_min = 1500; //1821
+float R_MODE_max = 2000;
+float R_VolPlus_min = 18000; //18205
+float R_VolPlus_max = 18500;
+float R_VolMinus_min = 23500; //24028
+float R_VolMinus_max = 24500;
+float R_ChPlus_min = 8500; //8779
+float R_ChPlus_max = 9000;
+float R_ChMinus_min = 12500; //12796
+float R_ChMinus_max = 13000;
 
-float R_Talk_min = 170;
-float R_Talk_max = 195;
-float R_Back_min = 30;
-float R_Back_max = 50;
+float R_Talk_min = 130; //158
+float R_Talk_max = 200; //178
+float R_Back_min = 5; //9
+float R_Back_max = 60; //49
 float R_HFT_notPressed_min = 900;
 float R_HFT_notPressed_max = 1100;
 
@@ -38,15 +38,17 @@ float TIP_threshold = 3;
 int answer_pushed = 0;
 int answer_long_pushed = 0;
 float time_answer = 0;
-float answer_long_press_duration = 100;
+float answer_long_press_duration = 2000;
 
-int debug = 1;
+int debug = 0;
 
 int delayTime = 50;
 
 void setup() {
   // only for debugging
-  Serial.begin(9600);
+  if(debug == 1){
+    Serial.begin(9600);
+  }
 
   // prepare analog inputs for SWC
   pinMode(A0, INPUT); // HFT SWC
@@ -85,7 +87,6 @@ void loop() {
   R_HFT = (R_REF_HFT * input_HFT) / (1023 - input_HFT);
 
   if(debug == 1){
-
     Serial.print("R_TIP: ");
     Serial.print(R_TIP);
     Serial.print("; R_HFT: ");
@@ -215,7 +216,7 @@ void loop() {
             digitalWrite(9, LOW);
             delay(50);
             digitalWrite(2, HIGH);
-            delay(50);
+            delay(200);
             digitalWrite(2, LOW);
             answer_long_pushed = 1;
             if(debug == 1){
