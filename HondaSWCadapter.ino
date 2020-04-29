@@ -4,7 +4,7 @@
 
 float R_REF_HFT = 9970;     //value of known resistance for A0 - HFT SWC
 float R_REF_Tip = 9970;     //value of known resistance for A1 - Tip Adapter
-float R_REF_Ring = 9990;     //value of known resistance for A2 - Ring Adapter
+float R_REF_Ring = 9980;     //value of known resistance for A2 - Ring Adapter
 
 float R_TIP = 0;          //value of unknown resistance for TIP
 float R_RING = 0;         //value of unknown resistance for RING
@@ -14,21 +14,21 @@ float input_TIP = 0;
 float input_RING = 0;
 float input_HFT = 0;
 
-float R_MODE_min = 1500; //1821
-float R_MODE_max = 2000;
-float R_VolPlus_min = 18000; //18205
-float R_VolPlus_max = 18500;
+float R_MODE_min = 1200; //1821
+float R_MODE_max = 2200;
+float R_VolPlus_min = 17700; //18205
+float R_VolPlus_max = 18700;
 float R_VolMinus_min = 23500; //24028
 float R_VolMinus_max = 24500;
-float R_ChPlus_min = 8500; //8779
-float R_ChPlus_max = 9000;
-float R_ChMinus_min = 12500; //12796
-float R_ChMinus_max = 13000;
+float R_ChPlus_min = 8200; //8779
+float R_ChPlus_max = 9200;
+float R_ChMinus_min = 12200; //12796
+float R_ChMinus_max = 13200;
 
-float R_Talk_min = 130; //158
-float R_Talk_max = 200; //178
+float R_Talk_min = 100; //158
+float R_Talk_max = 250; //178
 float R_Back_min = 5; //9
-float R_Back_max = 60; //49
+float R_Back_max = 70; //49
 float R_HFT_notPressed_min = 900;
 float R_HFT_notPressed_max = 1100;
 
@@ -38,7 +38,7 @@ float TIP_threshold = 3;
 int answer_pushed = 0;
 int answer_long_pushed = 0;
 float time_answer = 0;
-float answer_long_press_duration = 2000;
+float answer_long_press_duration = 2000; //2s.
 
 int debug = 0;
 
@@ -199,7 +199,6 @@ void loop() {
           digitalWrite(7, LOW);
           digitalWrite(8, LOW);
           digitalWrite(9, LOW);
-
           if(debug == 1){
             Serial.println("Answer");
           }
