@@ -14,21 +14,21 @@ float input_TIP = 0;
 float input_RING = 0;
 float input_HFT = 0;
 
-float R_MODE_min = 1200; //1821
+float R_MODE_min = 1200; //1821.11
 float R_MODE_max = 2200;
-float R_VolPlus_min = 17700; //18205
+float R_VolPlus_min = 17700; //18204.89
 float R_VolPlus_max = 18700;
-float R_VolMinus_min = 23500; //24028
+float R_VolMinus_min = 23500; //24027.70
 float R_VolMinus_max = 24500;
-float R_ChPlus_min = 8200; //8779
+float R_ChPlus_min = 8200; //8778.73
 float R_ChPlus_max = 9200;
-float R_ChMinus_min = 12200; //12796
+float R_ChMinus_min = 12200; //12796.32
 float R_ChMinus_max = 13200;
 
 float R_Talk_min = 100; //158
-float R_Talk_max = 250; //178
+float R_Talk_max = 250; //188
 float R_Back_min = 5; //9
-float R_Back_max = 70; //49
+float R_Back_max = 80; //59
 float R_HFT_notPressed_min = 900;
 float R_HFT_notPressed_max = 1100;
 
@@ -215,7 +215,7 @@ void loop() {
             digitalWrite(9, LOW);
             delay(50);
             digitalWrite(2, HIGH);
-            delay(200);
+            delay(300);
             digitalWrite(2, LOW);
             answer_long_pushed = 1;
             if(debug == 1){
