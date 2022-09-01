@@ -1,4 +1,4 @@
-// Steering wheel control v1.0
+// Steering wheel control v1.1
 
 // float Vin = 5.1;       //value of voltage from arduino - not used
 
@@ -14,21 +14,34 @@ float input_TIP = 0;
 float input_RING = 0;
 float input_HFT = 0;
 
-float R_MODE_min = 1200; //1821.11
-float R_MODE_max = 2200;
-float R_VolPlus_min = 17700; //18204.89
-float R_VolPlus_max = 18700;
-float R_VolMinus_min = 23500; //24027.70
-float R_VolMinus_max = 24500;
-float R_ChPlus_min = 8200; //8778.73
-float R_ChPlus_max = 9200;
-float R_ChMinus_min = 12200; //12796.32
-float R_ChMinus_max = 13200;
+// Values for Pioneer Adapter
+//float R_MODE_min = 1200; //1821.11
+//float R_MODE_max = 2200;
+//float R_VolPlus_min = 17700; //18204.89
+//float R_VolPlus_max = 18700;
+//float R_VolMinus_min = 23500; //24027.70
+//float R_VolMinus_max = 24500;
+//float R_ChPlus_min = 8200; //8778.73
+//float R_ChPlus_max = 9200;
+//float R_ChMinus_min = 12200; //12796.32
+//float R_ChMinus_max = 13200;
+
+// Values for Honda SWC
+float R_MODE_min = 3500; //3702.00; 
+float R_MODE_max = 4000; //3683.69;
+float R_VolPlus_min = 300; //342.75; 
+float R_VolPlus_max = 400; //332.33;
+float R_VolMinus_min = 50; //78.58; 
+float R_VolMinus_max = 140; //98.42;
+float R_ChPlus_min = 1500; //1673.05; 
+float R_ChPlus_max = 1800; //1686.35;
+float R_ChMinus_min = 700; //754.83; 
+float R_ChMinus_max = 800; //766.12;
 
 float R_Talk_min = 100; //158
-float R_Talk_max = 250; //188
-float R_Back_min = 5; //9
-float R_Back_max = 80; //59
+float R_Talk_max = 250; //168
+float R_Back_min = 5; //20
+float R_Back_max = 80; //40
 float R_HFT_notPressed_min = 900;
 float R_HFT_notPressed_max = 1100;
 
@@ -97,7 +110,7 @@ void loop() {
     Serial.println(input_HFT);
   }
 
-  if (input_TIP < 1023 - TIP_threshold) {
+  if (input_TIP < 508 - TIP_threshold) {
     if (R_TIP > R_MODE_min && R_TIP < R_MODE_max) {
       answer_pushed = 0;
       answer_long_pushed = 0;
@@ -183,7 +196,7 @@ void loop() {
     }
   }
   else {
-    if (R_HFT < R_HFT_notPressed_min && input_HFT < 1023 - TIP_threshold) {
+    if (R_HFT < R_HFT_notPressed_min && input_HFT < 91 - TIP_threshold) {
       if (R_HFT > R_Talk_min && R_HFT < R_Talk_max) {
         if(answer_pushed == 0){
           time_answer = millis();
